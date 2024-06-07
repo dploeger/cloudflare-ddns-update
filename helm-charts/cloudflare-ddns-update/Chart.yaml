@@ -1,0 +1,11 @@
+apiVersion: v2
+name: cloudflare-ddns-update
+description: A Helm chart to provide a Dyn v3 API to manage records in cloudflare
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+annotations:
+  artifacthub.io/category: "networking"
+  artifacthub.io/changes: |
+    - kind: "added"
+      description: "First public version"
