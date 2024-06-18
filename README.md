@@ -1,5 +1,7 @@
 # cloudflare-ddns-update - Dyn v3 API that manages DNS entries in cloudflare
 
+[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/cloudflare-ddns-update)](https://artifacthub.io/packages/search?repo=cloudflare-ddns-update)
+
 ## Introduction
 
 The [Dyn v3 API](https://help.dyn.com/remote-access-api/perform-update/) to update dynamic DNS records is used in 
