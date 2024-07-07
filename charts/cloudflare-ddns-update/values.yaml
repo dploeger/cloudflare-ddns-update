@@ -1,6 +1,41 @@
-# Default values for cloudflare-ddns-update.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
+configuration:
+  cloudflare:
+    # -- Use an existing secret for API token
+    # @section -- CloudFlare configuration
+    # @default -- Use the given apiToken
+    apiTokenExistingSecret:
+      # -- Secret name
+      # @section -- CloudFlare configuration
+      name: ""
+      # -- Key used for token
+      # @section -- CloudFlare configuration
+      tokenKey: "token"
+    # -- API token to authenticate to cloudflare
+    # @section -- CloudFlare configuration
+    apiToken: ""
+    # -- The name of the CloudFLare zone to use
+    # @section -- CloudFlare configuration
+    zone: ""
+  auth:
+    # -- Use an existing secret for the authentication
+    # @section -- Auth configuration
+    # @default -- Use the given username and password
+    existingSecret:
+      # -- secret name
+      # @section -- Auth configuration
+      name: ""
+      # -- key used for username
+      # @section -- Auth configuration
+      usernameKey: "username"
+      # -- key used for password
+      # @section -- Auth configuration
+      passwordKey: "password"
+    # -- Username required for basic auth
+    # @section -- Auth configuration
+    username: ""
+    # -- Password required for basic auth
+    # @section -- Auth configuration
+    password: ""
 
 replicaCount: 1
 
