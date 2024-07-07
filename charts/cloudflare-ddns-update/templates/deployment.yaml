@@ -45,6 +45,39 @@ spec:
             httpGet:
               path: /
               port: http
+          env:
+            - name: CLOUDFLARE_ZONE
+              value: {{ .Values.configuration.cloudflare.zone | quote }}
+            {{- if ne .Values.configuration.cloudflare.apiToken "" }}
+            - name: CLOUDFLARE_API_TOKEN
+              value: {{ .Values.configuration.cloudflare.apiToken | quote }}
+            {{- else if .Values.configuration.cloudflare.apiTokenExistingSecret }}
+            - name: CLOUDFLARE_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: {{ .Values.configuration.cloudflare.apiTokenExistingSecret.tokenKey }}
+                  name: {{ .Values.configuration.cloudflare.apiTokenExistingSecret.name }}
+            {{- end }}
+            {{- if ne .Values.configuration.auth.username "" }}
+            - name: AUTH_USERNAME
+              value: {{ .Values.configuration.auth.username | quote }}
+            {{- else if .Values.configuration.auth.existingSecret }}
+            - name: AUTH_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: {{ .Values.configuration.auth.existingSecret.usernameKey }}
+                  name: {{ .Values.configuration.auth.existingSecret.name }}
+            {{- end }}
+            {{- if ne .Values.configuration.auth.password "" }}
+            - name: AUTH_PASSWORD
+              value: {{ .Values.configuration.auth.password | quote }}
+            {{- else if .Values.configuration.auth.existingSecret }}
+            - name: AUTH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: {{ .Values.configuration.auth.existingSecret.passwordKey }}
+                  name: {{ .Values.configuration.auth.existingSecret.name }}
+            {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
