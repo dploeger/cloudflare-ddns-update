@@ -2,7 +2,7 @@ apiVersion: v2
 name: cloudflare-ddns-update
 description: A Helm chart to provide a Dyn v3 API to manage records in cloudflare
 type: application
-version: 0.1.1
+version: 0.1.2
 appVersion: "v0.1.0"
 home: "https://github.com/dploeger/cloudflare-ddns-update"
 sources:
